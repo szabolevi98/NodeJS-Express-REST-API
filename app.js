@@ -15,9 +15,9 @@ app.get('/', (req, res) => {
     res.send('It works!');
 });
 
-//Route message (external)
-const message = require(path.join(__dirname, 'routes', 'message.route'));
-app.use('/messages', message);
+//Route messages (external)
+const messages = require(path.join(__dirname, 'routes', 'message.route'));
+app.use('/messages', messages);
 
 //Connect to MongoDB
 mongoose.connect(process.env.DB_CONNECTION, 

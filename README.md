@@ -1,6 +1,6 @@
 # NodeJS-Express-REST-API
 
-This is a simple NodeJS REST API.  
+This is a simple NodeJS Express REST API.  
 Check the ".http" file for usage.
 
 - `npm install` to install dependencies
