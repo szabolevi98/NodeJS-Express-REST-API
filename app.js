@@ -15,13 +15,13 @@ app.get('/', (req, res) => {
     res.send('It works!');
 });
 
-//Route messages (external)
-const messages = require(path.join(__dirname, 'routes', 'message.route'));
-app.use('/messages', messages);
+//Route message (external)
+const message = require(path.join(__dirname, 'routes', 'message.route'));
+app.use('/message', message);
 
 //Connect to MongoDB
 mongoose.connect(process.env.DB_CONNECTION, 
-    { useNewUrlParser: true, useUnifiedTopology: true }, 
+    { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }, 
     (err) => {
       if (err) {
           console.log('Unable to connect to the database:', err.message);

@@ -3,7 +3,7 @@ const router = require('express').Router();
 const path = require('path');
 const messages = require(path.join(__dirname, '..', 'controllers', 'message.controller'));
 
-//Route messages
+//Route message
 router.get('/', messages.findAll); //Get all messages
 router.post('/', messages.create); //Create a new message
 router.get('/:messageId', messages.findOne); //Get a message with messageId
