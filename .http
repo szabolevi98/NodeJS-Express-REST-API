@@ -1,0 +1,36 @@
+//To use this file install "REST Client" in Visual Studio Code, or use Postman or any other preferred API client.
+
+//Get all message
+GET http://localhost:5000/messages HTTP/1.1
+
+###
+
+//Get a message by id: 5fe239de54adfb4a1894da8d
+GET http://localhost:5000/messages/5fe239de54adfb4a1894da8d HTTP/1.1
+
+###
+
+//Post a message
+POST http://localhost:5000/messages HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Test",
+    "content": "Test message"
+}
+
+###
+
+//Delete a message with id: 5fe239de54adfb4a1894da8d
+DELETE http://localhost:5000/messages/5fe239de54adfb4a1894da8d HTTP/1.1
+
+###
+
+//Update a message with id: 5fe239de54adfb4a1894da8d
+PUT http://localhost:5000/messages/5fe239de54adfb4a1894da8d HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Updated",
+    "content": "Test message updated"
+}
