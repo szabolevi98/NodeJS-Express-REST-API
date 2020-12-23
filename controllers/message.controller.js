@@ -5,13 +5,13 @@ const Message = require(path.join(__dirname, '..', 'models', 'message.model'));
 //Modules
 module.exports = {
     create: async(req, res) => {
-        if(req.body.content && req.body.title) {
-            const message = new Message({
+        if (req.body.content && req.body.title) {
+            const createMessage = new Message({
                 title: req.body.title,
                 content: req.body.content
             });
             try {
-                const data = await message.save();
+                const data = await createMessage.save();
                 res.send(data);
             } catch (error) {
                 res.status(500).send({
@@ -26,8 +26,8 @@ module.exports = {
     },
     findAll: async(req, res) => {
         try {
-            const messages = await Message.find();
-            res.send(messages);
+            const allMessage = await Message.find();
+            res.send(allMessage);
         } catch (error) {
             res.status(500).send({
                 message: error.message
@@ -37,7 +37,7 @@ module.exports = {
     findOne: async(req, res) => {
         try {
             const findMessage = await Message.findById(req.params.messageId);
-            if(!findMessage) {
+            if (!findMessage) {
                 return res.status(404).send({
                     message: "Message not found with id: " + req.params.messageId
                 });            
@@ -51,13 +51,13 @@ module.exports = {
         }
     },
     update: async(req, res) => {
-        if(req.body.content && req.body.title) {
+        if (req.body.content && req.body.title) {
             try {
                 const updateMessage = await Message.findByIdAndUpdate(req.params.messageId, {
                     title: req.body.title,
                     content: req.body.content
                 }, {new: true});
-                if(!updateMessage) {
+                if (!updateMessage) {
                     return res.status(404).send({
                         message: "Message not found with id: " + req.params.messageId
                     });
@@ -78,7 +78,7 @@ module.exports = {
     delete: async(req, res) => {
         try {
             const deleteMessage = await Message.findByIdAndRemove(req.params.messageId);
-            if(!deleteMessage) {
+            if (!deleteMessage) {
                 return res.status(404).send({
                     message: "Message not found with id: " + req.params.messageId
                 });
